@@ -40,4 +40,3 @@ Father and husband. I 3D print, do woodworking, train Brazilian Jiu-Jitsu, and w
 - LinkedIn: [linkedin.com/in/brendon-otto](https://www.linkedin.com/in/brendon-otto/)
 - X: [@brendondotto](https://x.com/brendondotto)
 - YouTube: [youtube.com/brendonotto](https://www.youtube.com/brendonotto)
-- Email: [brendon@brendonotto.com](mailto:brendon@brendonotto.com)

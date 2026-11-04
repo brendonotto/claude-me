@@ -10,7 +10,7 @@ The README in the `brendonotto/brendonotto` repository renders at the top of git
 4. **Stack.** A short line or compact list: daily stack, then "exploring" (Rust, Elixir, OCaml). Skip legacy tech he no longer wants to work in. Shields.io badges are optional; if used, keep to one row and only for the daily stack.
 5. **How I work.** Three or four of his principles as short bullets. Use his wording.
 6. **Outside work.** One line: hobbies, BJJ, Oliver.
-7. **Links.** Website, LinkedIn, X, YouTube, email. Make the website the first link.
+7. **Links.** Website, LinkedIn, X, YouTube. Make the website the first link. No email address on the README; it draws spam and newsletter sign-ups. LinkedIn and X are the contact routes.
 
 ## Things to avoid
 
