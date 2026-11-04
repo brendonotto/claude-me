@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: speaker-bio-and-linkedin
+expected_outcome: |
+  bios.md with two sections. Speaker bio: third person, under 75 words, title and one headline project or the origin-story hook, no 'open to' line. LinkedIn About: first person, ~200 words, current scope, origin story in a sentence, how he works, closes with what he's open to (Staff/Principal roles or project contracting). All facts trace to the profile; no buzzwords like passionate.

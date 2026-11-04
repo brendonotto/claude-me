@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: github-profile-readme
+expected_outcome: |
+  A README.md in first person with greeting, current role and projects (Montage, AI adoption, APIs), the origin story, daily stack plus exploring list, a few of his principles in his own words, one line of hobbies, and correct links (X handle brendondotto). No invented facts, no GitHub stats widgets, at most a couple of emoji.

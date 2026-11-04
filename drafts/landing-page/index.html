@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brendon Otto</title>
+  <meta name="description" content="Brendon Otto is a Lead Staff Software Engineer on the Architecture team at FMG Suite, where he sets engineering standards, decomposes a .NET monolith into team-owned APIs, and leads AI adoption across a 40+ engineer department. He got into software by taking a system apart to understand it, and has been doing that ever since. He lives in White Bear Lake, Minnesota.">
+  <link rel="canonical" href="https://brendonotto.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="https://brendonotto.com/">
+  <meta property="og:title" content="Brendon Otto · Lead Staff Software Engineer">
+  <meta property="og:description" content="Brendon Otto is a Lead Staff Software Engineer on the Architecture team at FMG Suite, where he sets engineering standards, decomposes a .NET monolith into team-owned APIs, and leads AI adoption across a 40+ engineer department. He got into software by taking a system apart to understand it, and has been doing that ever since. He lives in White Bear Lake, Minnesota.">
+  <meta property="og:site_name" content="brendonotto.com">
+  <meta property="profile:first_name" content="Brendon">
+  <meta property="profile:last_name" content="Otto">
+  <!-- TODO: add og:image once a headshot or social card exists, e.g. <meta property="og:image" content="https://brendonotto.com/og.png"> -->
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@brendondotto">
+  <meta name="twitter:creator" content="@brendondotto">
+  <meta name="twitter:title" content="Brendon Otto · Lead Staff Software Engineer">
+  <meta name="twitter:description" content="Brendon Otto is a Lead Staff Software Engineer on the Architecture team at FMG Suite, where he sets engineering standards, decomposes a .NET monolith into team-owned APIs, and leads AI adoption across a 40+ engineer department. He got into software by taking a system apart to understand it, and has been doing that ever since. He lives in White Bear Lake, Minnesota.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #fbfaf7;
+      --surface: #ffffff;
+      --text: #1d1c1a;
+      --muted: #5f5c55;
+      --border: #dcd8cf;
+      --accent: #0b5d4e;
+      --accent-contrast: #ffffff;
+      --button-bg: #ffffff;
+      --button-hover: #f1efe8;
+      --placeholder: #e8e4da;
+      --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #141414;
+        --surface: #1c1c1c;
+        --text: #ebe8e1;
+        --muted: #a39f95;
+        --border: #333330;
+        --accent: #6fcdb6;
+        --accent-contrast: #0f1f1b;
+        --button-bg: #1c1c1c;
+        --button-hover: #262624;
+        --placeholder: #262624;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #141414;
+      --surface: #1c1c1c;
+      --text: #ebe8e1;
+      --muted: #a39f95;
+      --border: #333330;
+      --accent: #6fcdb6;
+      --accent-contrast: #0f1f1b;
+      --button-bg: #1c1c1c;
+      --button-hover: #262624;
+      --placeholder: #262624;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { -webkit-text-size-adjust: 100%; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    main {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 40px 16px 24px;
+    }
+
+    a { color: var(--accent); }
+    a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+    /* Header: photo, name, title, location */
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+    }
+
+    .photo {
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      background: var(--placeholder);
+      display: grid;
+      place-items: center;
+      font-family: var(--mono);
+      font-size: 12px;
+      line-height: 1.3;
+      color: var(--muted);
+      overflow: hidden;
+    }
+    .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .wave { font-size: 28px; line-height: 1; }
+
+    h1 {
+      font-family: var(--mono);
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.2;
+      margin: 0;
+      letter-spacing: -0.01em;
+    }
+
+    .meta {
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4px 10px;
+    }
+    .meta span + span::before { content: "·"; margin-right: 10px; color: var(--border); }
+
+    /* Short bio */
+    .intro {
+      margin: 24px 0 0;
+      font-size: 17px;
+    }
+
+    /* Links */
+    nav { margin-top: 28px; }
+    nav ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+
+    .link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 56px;
+      padding: 12px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      background: var(--button-bg);
+      color: var(--text);
+      text-decoration: none;
+      font-family: var(--mono);
+      transition: background-color 120ms ease, border-color 120ms ease, transform 120ms ease;
+    }
+    .link:hover { background: var(--button-hover); border-color: var(--accent); }
+    .link:active { transform: translateY(1px); }
+
+    .glyph {
+      flex: 0 0 auto;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: var(--accent);
+      color: var(--accent-contrast);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .label { display: flex; flex-direction: column; min-width: 0; }
+    .label strong { font-weight: 500; font-size: 15px; }
+    .label small { font-size: 13px; color: var(--muted); overflow-wrap: anywhere; }
+
+    .arrow { margin-left: auto; color: var(--muted); font-size: 14px; }
+
+    /* Sections */
+    section { margin-top: 44px; }
+
+    h2 {
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin: 0 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    section p { margin: 0 0 1em; }
+    section p:last-child { margin-bottom: 0; }
+
+    .open-to {
+      padding: 18px;
+      border: 1.5px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 12px;
+      background: var(--surface);
+    }
+
+    footer {
+      margin-top: 48px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 6px 16px;
+    }
+
+    @media (min-width: 480px) {
+      main { padding-top: 56px; }
+      h1 { font-size: 32px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .link { transition: none; }
+      .link:active { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="profile">
+      <!-- TODO: headshot. Replace the placeholder below with <img src="headshot.jpg" alt="Brendon Otto"> -->
+      <div class="photo" role="img" aria-label="Headshot placeholder">TODO:<br>headshot</div>
+      <div class="wave" aria-hidden="true">👋</div>
+      <h1>Brendon Otto</h1>
+      <p class="meta">
+        <span>Lead Staff Software Engineer</span>
+        <span>White Bear Lake, MN</span>
+      </p>
+    </header>
+
+    <p class="intro">
+      I'm a Lead Staff Software Engineer on the Architecture team at FMG Suite, where I set engineering standards, decompose a .NET monolith into team-owned APIs, and lead AI adoption across a 40+ engineer department. I got into software by taking a system apart to understand it, and I've been doing that ever since. I live in White Bear Lake, Minnesota.
+    </p>
+
+    <nav aria-label="Links">
+      <ul>
+        <li>
+          <a class="link" href="https://brendonotto.com" rel="me">
+            <span class="glyph" aria-hidden="true">www</span>
+            <span class="label"><strong>Website &amp; blog</strong><small>brendonotto.com</small></span>
+            <span class="arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+        <li>
+          <a class="link" href="https://github.com/brendonotto" rel="me">
+            <span class="glyph" aria-hidden="true">gh</span>
+            <span class="label"><strong>GitHub</strong><small>github.com/brendonotto</small></span>
+            <span class="arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+        <li>
+          <a class="link" href="https://www.linkedin.com/in/brendon-otto/" rel="me">
+            <span class="glyph" aria-hidden="true">in</span>
+            <span class="label"><strong>LinkedIn</strong><small>linkedin.com/in/brendon-otto</small></span>
+            <span class="arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+        <li>
+          <a class="link" href="https://x.com/brendondotto" rel="me">
+            <span class="glyph" aria-hidden="true">x</span>
+            <span class="label"><strong>X</strong><small>@brendondotto</small></span>
+            <span class="arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+        <li>
+          <a class="link" href="https://www.youtube.com/brendonotto" rel="me">
+            <span class="glyph" aria-hidden="true">yt</span>
+            <span class="label"><strong>YouTube</strong><small>youtube.com/brendonotto</small></span>
+            <span class="arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+        <li>
+          <a class="link" href="mailto:brendon@brendonotto.com" rel="me">
+            <span class="glyph" aria-hidden="true">@</span>
+            <span class="label"><strong>Email</strong><small>brendon@brendonotto.com</small></span>
+            <span class="arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <section id="about" aria-labelledby="about-heading">
+      <h2 id="about-heading">More about me</h2>
+      <p>I'm a Lead Staff Software Engineer at FMG Suite, where I've spent seven years moving from senior engineer on the website team, to team lead, to co-founding the company's Architecture team. Today that team guides the flagship product's architectural decisions and builds the foundations other product teams ship on.</p>
+      <p>My path into software was not a computer science degree. After a Communication Studies degree from the University of Minnesota and a stint in insurance sales, I took an installation technician job at Insite Software just to get inside a technology company. Doing Tier 2 and 3 support taught me how the whole system fit together, and volunteering for small customizations in Progress turned into a programming job earned by delivering projects on time and under budget. When the product was rebuilt in C#, I taught myself at night and designed the bridges between the two systems. That habit of getting into a system, breaking it down to its pieces, and making sense of it carried me through Epicor, ProAg Crop Insurance, and into FMG.</p>
+      <p>At FMG I ran the original React proofs of concept that replaced Knockout.js, chose Material UI as the component foundation, and later led the team that shipped Visual Editing, a large product and process change that a shortened timeline did not derail. The VP of Engineering called the release "super boring," which was the point. I started the Content API, helped lay the foundations for the Management API, built the Site API, and set the conventions behind them: RESTful design, resources and actions identified early, and performance tuned from day one so caching is a last resort. None of those APIs has needed a data cache yet.</p>
+      <p>For the last two years I've led FMG's AI adoption: day-and-a-half Copilot workshops for every product team, weekly department trainings, layered AGENTS.md conventions across repositories, and engineering standards developed with the VP so the company can measure the return on its AI investment. My current project, Montage, decouples the ASP.NET monolith into .NET 10 containerized APIs that each team owns and releases independently.</p>
+      <p>I believe software is a team sport, that performance is a feature, and that once a decision is made everyone gets in line. Outside work I 3D print, do woodworking, train Brazilian Jiu-Jitsu, and walk my dog Oliver.</p>
+    </section>
+
+    <section id="open-to" aria-labelledby="open-heading">
+      <h2 id="open-heading">What I'm open to</h2>
+      <div class="open-to">
+        <p>I'm most interested in Staff or Principal Engineer roles where I can own architecture decisions and help product teams ship faster on top of them. I'm also open to project-based contracting with a CTO who needs a .NET and React modernization, an API platform, or an AI enablement program moved forward. If that sounds like your problem, <a href="mailto:brendon@brendonotto.com">email me</a>.</p>
+      </div>
+    </section>
+
+    <footer>
+      <span>&copy; 2026 Brendon Otto</span>
+      <span>he/him</span>
+    </footer>
+  </main>
+</body>
+</html>

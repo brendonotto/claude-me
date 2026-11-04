@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: link-in-bio-page
+expected_outcome: |
+  A single self-contained index.html: name/title/location, the ~60-word short bio, full-width link buttons in order (website, GitHub, LinkedIn, X, YouTube, email) with exact URLs from the profile, the long bio below or behind a toggle, an 'open to' paragraph, light/dark support via CSS variables, OG meta tags, no Instagram, no third-party scripts, no invented facts.
