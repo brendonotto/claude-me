@@ -4,7 +4,7 @@ The README in the `brendonotto/brendonotto` repository renders at the top of git
 
 ## Structure (keep to roughly 40–70 lines of Markdown)
 
-1. **Greeting + one-line identity.** `# Hi, I'm Brendon 👋` then one sentence: title, company, what the Architecture team does. One emoji total is enough.
+1. **Greeting + one-line identity.** `# Hi, I'm Brendon 👋` then one sentence: title, company, what the Architecture team does. Call it "the Architecture team" (not "Platforms/Architecture"). Say "working remotely from Minnesota" and do not name the city. One emoji total is enough.
 2. **What I do now.** Three to five bullets, present tense, each a concrete responsibility or current project: Montage, AI adoption across the department, API standards, React/Material UI platform. Lead with the most impressive scope.
 3. **How I got here.** Two or three sentences of the origin story (Communication Studies → insurance sales → install tech → engineer). This is what makes the README memorable.
 4. **Stack.** A short line or compact list: daily stack, then "exploring" (Rust, Elixir, OCaml). Skip legacy tech he no longer wants to work in. Shields.io badges are optional; if used, keep to one row and only for the daily stack.

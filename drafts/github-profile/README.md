@@ -1,6 +1,6 @@
 # Hi, I'm Brendon 👋
 
-I'm a Lead Staff Software Engineer at [FMG Suite](https://fmgsuite.com/), on the Platforms/Architecture team, working remotely from White Bear Lake, Minnesota. We guide the architectural decisions for FMG's flagship product and build the foundations the other product teams ship on.
+I'm a Lead Staff Software Engineer at [FMG Suite](https://fmgsuite.com/), on the Architecture team, working remotely from Minnesota. We guide the architectural decisions for FMG's flagship product and build the foundations the other product teams ship on.
 
 ## What I do now
 
