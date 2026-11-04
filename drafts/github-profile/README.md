@@ -1,6 +1,6 @@
 # Hi, I'm Brendon 👋
 
-I'm a Lead Staff Software Engineer at FMG Suite, on the Platforms/Architecture team. We guide the architectural decisions for FMG's flagship product and build the foundations the other product teams ship on.
+I'm a Lead Staff Software Engineer at [FMG Suite](https://fmgsuite.com/), on the Platforms/Architecture team, working remotely from White Bear Lake, Minnesota. We guide the architectural decisions for FMG's flagship product and build the foundations the other product teams ship on.
 
 ## What I do now
 
@@ -32,7 +32,7 @@ I didn't come in through a computer science degree. After a Communication Studie
 
 ## Outside work
 
-Father and husband in White Bear Lake, Minnesota. I 3D print, do woodworking, train Brazilian Jiu-Jitsu, and walk my dog Oliver.
+Father and husband. I 3D print, do woodworking, train Brazilian Jiu-Jitsu, and walk my dog Oliver.
 
 ## Links
 
