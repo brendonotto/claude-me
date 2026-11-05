@@ -59,9 +59,13 @@ The output is a static `dist/` folder, so any static host works. Two good option
    that touch `site/`. Enable Pages (Settings → Pages → Source: GitHub Actions) and add
    `brendonotto.com` as the custom domain.
 
+## Migration notes
+
+The six posts came from `brendonotto/brendonotto-astro` (`src/contents/`) with their original
+slugs, so `/posts/<slug>/`, `/tags/<tag>/`, `/rss.xml`, and `/assets/images/*` URLs all still
+resolve. Tags were lowercased to match the old site's tag URLs. `/search` was not carried over.
+
 ## Open items
 
-- Blog post links go to `/posts` until the real slugs are confirmed; the build environment
-  could not reach brendonotto.com.
 - No headshot. The design does not need one, but the `og.png` could carry one later.
 - Contact is LinkedIn and X only. Add email back in `src/data/profile.ts` if wanted.

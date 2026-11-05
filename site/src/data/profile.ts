@@ -225,8 +225,7 @@ export const principles = [
   { title: 'Scratch your own itch.', body: "Tools built for your own problem tend to become solutions for someone else's." },
 ];
 
-// TODO: brendonotto.com is not reachable from the build session, so post slugs are unverified.
-// Each entry links to the posts index until the real slugs are filled in.
+// Fallback list used only if src/content/posts/ is empty. The live Writing section reads the collection.
 export const postsIndex = 'https://brendonotto.com/posts';
 export const writing = [
   { date: '2023-08', title: 'Hello world with Axum and Svelte', summary: 'A Rust backend serving a static SvelteKit build for a quotes side project.' },

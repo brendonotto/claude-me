@@ -21,7 +21,6 @@ const { title, description, date, updated, tags } = Astro.props;
     <header class="post-head">
       <p class="mono crumbs"><a href="/posts">Writing</a> <span aria-hidden="true">/</span> <span class="tabular">{fmt(date)}</span></p>
       <h1>{title}</h1>
-      {description && <p class="deck">{description}</p>}
       {
         (tags.length > 0 || updated) && (
           <p class="mono meta">
@@ -68,12 +67,6 @@ const { title, description, date, updated, tags } = Astro.props;
     font-weight: 760;
     font-variation-settings: 'wdth' 112;
     letter-spacing: -0.02em;
-  }
-
-  .deck {
-    font-size: 1.2rem;
-    color: var(--ink-2);
-    max-width: var(--measure);
   }
 
   .meta {
