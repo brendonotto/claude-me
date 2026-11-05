@@ -6,7 +6,7 @@ I'm a Lead Staff Software Engineer at [FMG Suite](https://fmgsuite.com/), on the
 
 - **Montage.** Leading the decoupling of our ASP.NET monolith into .NET 10 containerized APIs, each owned and released by its own team. No more shared central release train.
 - **AI adoption across a 40+ engineer department.** Day-and-a-half GitHub Copilot workshops for six product teams, weekly department trainings, layered AGENTS.md conventions across repositories, and custom agents and skills that encode our products for AI-assisted review. Piloted the GitHub Copilot Upgrade Agent for .NET modernization with Microsoft.
-- **Engineering standards.** Working with the VP of Engineering on org-wide standards tied to the return on our AI investment. Eliminate process before automating it.
+- **Engineering standards.** Working with engineering leadership on org-wide standards tied to the return on our AI investment. Eliminate process before automating it.
 - **API platform.** Started the Content API, helped lay the foundations for the Management API, built the Site API, and set the conventions behind them: RESTful design, resources and actions identified early, performance tuned from day one. None of them has needed a data cache yet.
 - **Front-end platform.** Ran the React proof of concept that replaced Knockout.js and chose Material UI as the component foundation, so engineers aren't making UX decisions ad hoc.
 
