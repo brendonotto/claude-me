@@ -1,5 +1,12 @@
 ---
 import { writing, postsIndex } from '../data/profile';
+import { publishedPosts } from '../lib/posts';
+import PostList from './PostList.astro';
+
+// Once posts live in src/content/posts/, this section reads them and links internally.
+// Until then it falls back to the static list that links to the current blog.
+const posts = await publishedPosts();
+const latest = posts.slice(0, 6);
 ---
 
 <section id="writing" class="sheet">
@@ -12,20 +19,33 @@ import { writing, postsIndex } from '../data/profile';
       The blog is where side projects get written up. Rust, Elixir and Phoenix, SvelteKit, and a Synology NAS that hosts
       most of it.
     </p>
-    <ol class="posts">
-      {writing.map((w) => (
-        <li>
-          <a href={postsIndex} rel="noopener">
-            <span class="mono tabular date">{w.date}</span>
-            <span class="title">{w.title}</span>
-            <span class="summary">{w.summary}</span>
-          </a>
-        </li>
-      ))}
-    </ol>
-    <p class="all">
-      <a class="btn" href={postsIndex} rel="noopener">All posts on brendonotto.com</a>
-    </p>
+    {
+      latest.length > 0 ? (
+        <>
+          <PostList posts={latest} />
+          <p class="all">
+            <a class="btn" href="/posts">All posts</a>
+          </p>
+        </>
+      ) : (
+        <>
+          <ol class="posts">
+            {writing.map((w) => (
+              <li>
+                <a href={postsIndex} rel="noopener">
+                  <span class="mono tabular date">{w.date}</span>
+                  <span class="title">{w.title}</span>
+                  <span class="summary">{w.summary}</span>
+                </a>
+              </li>
+            ))}
+          </ol>
+          <p class="all">
+            <a class="btn" href={postsIndex} rel="noopener">All posts on brendonotto.com</a>
+          </p>
+        </>
+      )
+    }
   </div>
 </section>
 

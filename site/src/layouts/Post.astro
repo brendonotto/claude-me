@@ -1,0 +1,241 @@
+---
+import Base from './Base.astro';
+import Nav from '../components/Nav.astro';
+import TitleBlock from '../components/TitleBlock.astro';
+import { fmt } from '../lib/posts';
+
+interface Props {
+  title: string;
+  description?: string;
+  date: Date;
+  updated?: Date;
+  tags: string[];
+}
+
+const { title, description, date, updated, tags } = Astro.props;
+---
+
+<Base title={`${title} · Brendon Otto`} description={description}>
+  <Nav />
+  <main class="wrap post">
+    <header class="post-head">
+      <p class="mono crumbs"><a href="/posts">Writing</a> <span aria-hidden="true">/</span> <span class="tabular">{fmt(date)}</span></p>
+      <h1>{title}</h1>
+      {description && <p class="deck">{description}</p>}
+      {
+        (tags.length > 0 || updated) && (
+          <p class="mono meta">
+            {tags.map((t) => (
+              <a href={`/tags/${t}`}>#{t}</a>
+            ))}
+            {updated && <span class="tabular">Updated {fmt(updated)}</span>}
+          </p>
+        )
+      }
+    </header>
+    <article class="prose">
+      <slot />
+    </article>
+    <p class="back"><a class="btn" href="/posts">All posts</a></p>
+  </main>
+  <TitleBlock />
+</Base>
+
+<style>
+  .post {
+    padding-block: clamp(2.5rem, 6vw, 4.5rem) 3rem;
+    max-width: calc(var(--measure) + 2 * 16px + 10rem);
+  }
+
+  .post-head {
+    display: grid;
+    gap: 0.9rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .crumbs a {
+    text-decoration: none;
+  }
+
+  .crumbs a:hover {
+    color: var(--accent);
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    font-weight: 760;
+    font-variation-settings: 'wdth' 112;
+    letter-spacing: -0.02em;
+  }
+
+  .deck {
+    font-size: 1.2rem;
+    color: var(--ink-2);
+    max-width: var(--measure);
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+  }
+
+  .meta a {
+    text-decoration: none;
+    color: var(--accent);
+  }
+
+  .back {
+    margin-top: 3rem;
+  }
+</style>
+
+<style is:global>
+  /* Rendered Markdown. Global because the content comes from the slot. */
+  .prose {
+    max-width: var(--measure);
+    font-size: 1.08rem;
+    line-height: 1.7;
+  }
+
+  .prose > * + * {
+    margin-top: 1.1em;
+  }
+
+  .prose h2,
+  .prose h3,
+  .prose h4 {
+    font-family: var(--display);
+    font-variation-settings: 'wdth' 108;
+    line-height: 1.15;
+    margin-top: 2em;
+    text-wrap: balance;
+  }
+
+  .prose h2 {
+    font-size: 1.7rem;
+  }
+
+  .prose h3 {
+    font-size: 1.3rem;
+  }
+
+  .prose h4 {
+    font-size: 1.1rem;
+  }
+
+  .prose a {
+    color: var(--accent);
+    text-decoration-color: var(--line);
+  }
+
+  .prose ul,
+  .prose ol {
+    padding-left: 1.4rem;
+  }
+
+  .prose li + li {
+    margin-top: 0.35em;
+  }
+
+  .prose li::marker {
+    color: var(--blue);
+  }
+
+  .prose blockquote {
+    margin: 1.5em 0;
+    padding: 0.25em 0 0.25em 1.2em;
+    border-left: 2px solid var(--accent);
+    color: var(--ink-2);
+  }
+
+  .prose img,
+  .prose video {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--line);
+  }
+
+  .prose figcaption {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0.5rem;
+  }
+
+  .prose code {
+    font-family: var(--mono);
+    font-size: 0.92em;
+  }
+
+  .prose :not(pre) > code {
+    padding: 0.1em 0.35em;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: color-mix(in srgb, var(--paper) 70%, transparent);
+  }
+
+  .prose pre {
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow-x: auto;
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  /* Shiki dual themes: follow the page's theme tokens. */
+  .prose pre.astro-code {
+    background: var(--paper) !important;
+  }
+
+  .prose .astro-code,
+  .prose .astro-code span {
+    color: var(--shiki-light);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) .prose .astro-code,
+    :root:not([data-theme='light']) .prose .astro-code span {
+      color: var(--shiki-dark) !important;
+    }
+  }
+
+  :root[data-theme='dark'] .prose .astro-code,
+  :root[data-theme='dark'] .prose .astro-code span {
+    color: var(--shiki-dark) !important;
+  }
+
+  .prose table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.95rem;
+    display: block;
+    overflow-x: auto;
+  }
+
+  .prose th,
+  .prose td {
+    text-align: left;
+    padding: 0.45rem 0.7rem;
+    border: 1px solid var(--line);
+  }
+
+  .prose th {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .prose hr {
+    border: 0;
+    border-top: 1px solid var(--line);
+    margin: 2.5em 0;
+  }
+</style>

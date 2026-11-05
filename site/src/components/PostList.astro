@@ -1,0 +1,78 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { fmt } from '../lib/posts';
+
+interface Props {
+  posts: CollectionEntry<'posts'>[];
+}
+
+const { posts } = Astro.props;
+---
+
+<ol class="posts">
+  {posts.map((p) => (
+    <li>
+      <a href={`/posts/${p.id}`}>
+        <span class="mono tabular date">{fmt(p.data.date)}</span>
+        <span class="title">{p.data.title}</span>
+        {p.data.description && <span class="summary">{p.data.description}</span>}
+      </a>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .posts {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .posts a {
+    display: grid;
+    grid-template-columns: 7rem minmax(0, 1fr);
+    grid-template-areas:
+      'date title'
+      'date summary';
+    gap: 0.1rem 1rem;
+    padding: 0.9rem 0.25rem;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+    transition: background-color 120ms ease;
+  }
+
+  .posts a:hover {
+    background: var(--accent-soft);
+  }
+
+  .posts a:hover .title {
+    color: var(--accent);
+  }
+
+  .date {
+    grid-area: date;
+    padding-top: 0.25rem;
+  }
+
+  .title {
+    grid-area: title;
+    font-weight: 600;
+  }
+
+  .summary {
+    grid-area: summary;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 480px) {
+    .posts a {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        'date'
+        'title'
+        'summary';
+    }
+  }
+</style>

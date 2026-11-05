@@ -1,0 +1,64 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import TitleBlock from '../../components/TitleBlock.astro';
+import PostList from '../../components/PostList.astro';
+import { publishedPosts } from '../../lib/posts';
+
+const posts = await publishedPosts();
+const tags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
+---
+
+<Base title="Writing · Brendon Otto" description="Write-ups from side projects in Rust, Elixir, and whatever else is on the bench.">
+  <Nav />
+  <main class="wrap">
+    <div class="sheet-head">
+      <h1>Writing</h1>
+      <p class="mono tabular">{posts.length} posts · <a href="/rss.xml">RSS</a></p>
+    </div>
+    <p class="intro measure">
+      Write-ups from side projects, mostly. Rust, Elixir and Phoenix, SvelteKit, and a NAS that hosts most of it.
+    </p>
+    {
+      tags.length > 0 && (
+        <p class="tags mono">
+          {tags.map((t) => (
+            <a href={`/tags/${t}`}>#{t}</a>
+          ))}
+        </p>
+      )
+    }
+    <PostList posts={posts} />
+  </main>
+  <TitleBlock />
+</Base>
+
+<style>
+  main {
+    padding-block: clamp(2.5rem, 6vw, 4.5rem) 3rem;
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+  }
+
+  .intro {
+    color: var(--ink-2);
+    margin-bottom: 1.25rem;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .tags a {
+    text-decoration: none;
+  }
+
+  .tags a:hover {
+    color: var(--accent);
+  }
+</style>

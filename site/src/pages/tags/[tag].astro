@@ -1,0 +1,38 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import TitleBlock from '../../components/TitleBlock.astro';
+import PostList from '../../components/PostList.astro';
+import { publishedPosts } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await publishedPosts();
+  const tags = [...new Set(posts.flatMap((p) => p.data.tags))];
+  return tags.map((tag) => ({ params: { tag }, props: { posts: posts.filter((p) => p.data.tags.includes(tag)) } }));
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<Base title={`#${tag} · Brendon Otto`} description={`Posts tagged ${tag}.`}>
+  <Nav />
+  <main class="wrap">
+    <div class="sheet-head">
+      <h1>#{tag}</h1>
+      <p class="mono tabular"><a href="/posts">All writing</a> · {posts.length} {posts.length === 1 ? 'post' : 'posts'}</p>
+    </div>
+    <PostList posts={posts} />
+  </main>
+  <TitleBlock />
+</Base>
+
+<style>
+  main {
+    padding-block: clamp(2.5rem, 6vw, 4.5rem) 3rem;
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+  }
+</style>

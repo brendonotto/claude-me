@@ -10,6 +10,28 @@ Personal site for Brendon Otto. Static, one page, no client framework.
   IBM Plex Mono for labels. The hero is an exploded isometric view of four APIs
   lifting out of a monolith, computed in `src/components/ExplodedView.astro`.
 
+## Writing a post
+
+Add a Markdown file to `src/content/posts/`. The file name is the URL slug, so
+`scratch-your-own-itch.md` is served at `/posts/scratch-your-own-itch/`. Frontmatter:
+
+```yaml
+---
+title: Scratch your own itch
+date: 2021-12-26
+description: One sentence for the list page, RSS, and link previews.
+tags: [rust, learning]
+draft: false        # true hides it from the build (still visible in `npm run dev`)
+updated: 2023-01-08 # optional
+---
+```
+
+Images go in `public/images/` and are referenced as `/images/name.png`, or next to the
+post if you prefer Astro's relative image handling. Code blocks are highlighted and follow
+the light and dark theme. `/posts`, `/tags/<tag>`, and `/rss.xml` are generated from the
+collection. The landing page's Writing section shows the six newest posts; until any post
+exists it links to the current blog instead.
+
 ## Run
 
 ```bash

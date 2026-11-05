@@ -2,17 +2,17 @@
 import { identity } from '../data/profile';
 
 const items = [
-  ['Story', '#story'],
-  ['Work', '#work'],
-  ['Experience', '#experience'],
-  ['Writing', '#writing'],
-  ['Contact', '#contact'],
+  ['Story', '/#story'],
+  ['Work', '/#work'],
+  ['Experience', '/#experience'],
+  ['Writing', '/posts'],
+  ['Contact', '/#contact'],
 ];
 ---
 
 <header class="nav">
   <div class="wrap nav-inner">
-    <a class="brand" href="#top">
+    <a class="brand" href="/">
       <span class="brand-mark" aria-hidden="true"></span>
       <span class="brand-name">{identity.name}</span>
     </a>
