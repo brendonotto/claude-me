@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import TitleBlock from '../components/TitleBlock.astro';
+---
+
+<Base title="Not found · Brendon Otto" description="That page is not on this sheet.">
+  <Nav />
+  <main class="wrap nf">
+    <p class="mono">Sheet not found · 404</p>
+    <h1>That page isn't on this drawing.</h1>
+    <p class="lead">The link may be old, or the post may have moved. Everything that exists is reachable from these two places.</p>
+    <p class="ctas">
+      <a class="btn btn-primary" href="/">Home</a>
+      <a class="btn" href="/posts">Writing</a>
+    </p>
+  </main>
+  <TitleBlock />
+</Base>
+
+<style>
+  .nf {
+    padding-block: clamp(3rem, 10vw, 7rem) 3rem;
+    display: grid;
+    gap: 1rem;
+    max-width: 48rem;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+  }
+
+  .lead {
+    color: var(--ink-2);
+    font-size: 1.1rem;
+  }
+
+  .ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+</style>

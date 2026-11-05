@@ -1,0 +1,19 @@
+// Cloudflare Workers with static assets. Deploy with `npm run deploy` after `npm run build`.
+// Docs: https://developers.cloudflare.com/workers/static-assets/
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "brendonotto-com",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    // Serve dist/404.html with a 404 status for unknown paths.
+    "not_found_handling": "404-page",
+    // /posts/foo and /posts/foo/ both resolve to dist/posts/foo/index.html.
+    "html_handling": "auto-trailing-slash"
+  },
+  "observability": {
+    "enabled": true
+  }
+  // When a contact form (or any server code) is added, point "main" at the Worker script,
+  // e.g. "main": "src/worker.ts", and set assets.run_worker_first for the API routes.
+}

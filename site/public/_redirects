@@ -1,0 +1,4 @@
+# Paths from the old site that no longer exist. Cloudflare reads this file from the build output.
+/search   /posts  301
+/tags     /posts  301
+/posts/1  /posts  301

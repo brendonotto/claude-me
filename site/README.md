@@ -51,13 +51,18 @@ themes and reports horizontal overflow and console errors.
 
 ## Deploy
 
-The output is a static `dist/` folder, so any static host works. Two good options:
+Cloudflare Workers with static assets, configured in `wrangler.jsonc`. Full setup, DNS, and
+registrar steps are in `../docs/cloudflare-deploy.md`.
 
-1. **Cloudflare Pages**: connect the repo, set the root directory to `site`, build command
-   `npm run build`, output `dist`. Point the `brendonotto.com` DNS at it.
-2. **GitHub Pages**: `.github/workflows/site.yml` builds and deploys on pushes to `main`
-   that touch `site/`. Enable Pages (Settings → Pages → Source: GitHub Actions) and add
-   `brendonotto.com` as the custom domain.
+```bash
+npm run deploy          # astro build && wrangler deploy (needs `npx wrangler login` once)
+```
+
+`.github/workflows/site.yml` does the same on every push to `main` that touches `site/`, using the
+`CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repository secrets.
+
+`public/_redirects` maps old URLs from the previous site, `public/_headers` sets caching and
+security headers, and `src/pages/404.astro` is served for unknown paths.
 
 ## Migration notes
 
