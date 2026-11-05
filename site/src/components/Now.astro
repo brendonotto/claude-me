@@ -1,19 +1,20 @@
 ---
-import { now } from '../data/profile';
+import { capabilities } from '../data/profile';
 ---
 
 <section id="now" class="sheet">
   <div class="wrap">
     <div class="sheet-head">
-      <h2>What I'm building now</h2>
-      <p class="mono">Sheet 01 · Current scope</p>
+      <h2>What I do</h2>
+      <p class="mono">Sheet 01 · Capabilities</p>
     </div>
-    <ol class="now-list">
-      {now.map((n) => (
-        <li class="now-item">
-          <p class="mono code">{n.code}</p>
-          <h3>{n.title}</h3>
-          <p class="body">{n.body}</p>
+    <ol class="cap-list">
+      {capabilities.map((c) => (
+        <li class="cap">
+          <p class="mono code">{c.code}</p>
+          <h3>{c.title}</h3>
+          <p class="body">{c.body}</p>
+          <p class="evidence"><span class="mono">Evidence</span>{c.evidence}</p>
         </li>
       ))}
     </ol>
@@ -21,28 +22,29 @@ import { now } from '../data/profile';
 </section>
 
 <style>
-  .now-list {
+  .cap-list {
     list-style: none;
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     border-top: 1px solid var(--line);
     border-left: 1px solid var(--line);
   }
 
-  .now-item {
+  .cap {
     display: grid;
+    grid-template-rows: auto auto 1fr auto;
     gap: 0.5rem;
-    padding: 1.4rem 1.4rem 1.6rem;
+    padding: 1.4rem 1.4rem 1.5rem;
     border-right: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
     background: color-mix(in srgb, var(--paper) 55%, transparent);
     min-width: 0;
   }
 
-  .now-item h3 {
-    font-size: 1.35rem;
+  .cap h3 {
+    font-size: 1.25rem;
     font-weight: 700;
   }
 
@@ -52,11 +54,26 @@ import { now } from '../data/profile';
 
   .body {
     color: var(--ink-2);
-    font-size: 1rem;
+    font-size: 0.97rem;
   }
 
-  @media (max-width: 720px) {
-    .now-list {
+  .evidence {
+    display: grid;
+    gap: 0.15rem;
+    padding-top: 0.75rem;
+    border-top: 1px dashed var(--line);
+    font-size: 0.92rem;
+    color: var(--ink);
+  }
+
+  @media (max-width: 960px) {
+    .cap-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .cap-list {
       grid-template-columns: 1fr;
     }
   }

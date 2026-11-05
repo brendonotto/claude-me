@@ -1,5 +1,5 @@
 ---
-// An exploded isometric drawing: four APIs lifting out of the monolith they came from.
+// An exploded isometric drawing: the four things that come apart when a shared system is decoupled.
 // Geometry is computed here so there is no hand-written path data.
 
 const ISO_X = [Math.cos(Math.PI / 6), Math.sin(Math.PI / 6)];
@@ -31,15 +31,15 @@ const OY = 372;
 const base = slab(236, 236, 22, 0, OX, OY);
 const SLAB_H = 26;
 const parts = [
-  { label: 'Content API', z: 22 },
-  { label: 'Management API', z: 22 + SLAB_H },
-  { label: 'Site API', z: 22 + SLAB_H * 2 },
-  { label: 'Mobile app API', z: 22 + SLAB_H * 3 },
+  { label: 'Domain boundary', z: 22 },
+  { label: 'API contract', z: 22 + SLAB_H },
+  { label: 'Team ownership', z: 22 + SLAB_H * 2 },
+  { label: 'Independent release', z: 22 + SLAB_H * 3 },
 ].map((p, i) => ({ ...p, lift: -(i + 1) * 30, geo: slab(176, 176, SLAB_H, p.z, OX, OY) }));
 ---
 
 <figure class="exploded" aria-labelledby="exploded-caption">
-  <svg viewBox="0 0 580 520" role="img" aria-label="Exploded drawing of four APIs lifting out of a monolith base">
+  <svg viewBox="0 0 600 520" role="img" aria-label="Exploded drawing: domain boundary, API contract, team ownership, and independent release lifting out of one shared system">
     <defs>
       <marker id="tick" viewBox="0 0 6 6" refX="3" refY="3" markerWidth="6" markerHeight="6" orient="auto">
         <path d="M1 5 L5 1" stroke="var(--blue)" stroke-width="1" fill="none"></path>
@@ -74,14 +74,14 @@ const parts = [
     <g class="dim">
       <line x1="22" y1="100" x2="22" y2="350" class="dim-line" marker-start="url(#tick)" marker-end="url(#tick)"></line>
       <line x1="22" y1="350" x2="36" y2="350" class="dim-line"></line>
-      <text x="16" y="225" class="label dim-text" transform="rotate(-90 16 225)">4 × team-owned</text>
+      <text x="16" y="225" class="label dim-text" transform="rotate(-90 16 225)">4 × decoupled</text>
     </g>
 
     <g class="base-label">
-      <text x="240" y="510" class="label base-text">ASP.NET monolith</text>
+      <text x="240" y="510" class="label base-text">One shared system</text>
     </g>
   </svg>
-  <figcaption id="exploded-caption" class="mono">Fig. 1 · Exploded view · Montage, 2026</figcaption>
+  <figcaption id="exploded-caption" class="mono">Fig. 1 · Exploded view · How I take a system apart</figcaption>
 </figure>
 
 <style>

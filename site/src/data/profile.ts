@@ -12,9 +12,9 @@ export const identity = {
   location: 'Minnesota, remote',
   tagline: 'I take large systems apart, make them make sense, and help teams ship faster on top of them.',
   shortBio:
-    "I'm a Lead Staff Software Engineer on the Architecture team at FMG Suite, where I set engineering standards, decompose a .NET monolith into team-owned APIs, and lead AI adoption across a 40+ engineer department. I got into software by taking a system apart to understand it, and I've been doing that ever since.",
+    "I'm a Lead Staff Software Engineer on the Architecture team at FMG Suite, where I set engineering standards, break a large monolith into team-owned services, and lead AI adoption across a 40+ engineer department. I got into software by taking a system apart to understand it, and I've been doing that ever since.",
   description:
-    'Brendon Otto is a Lead Staff Software Engineer on the Architecture team at FMG Suite: monolith decomposition, API standards, and AI adoption across a 40+ engineer department. Minnesota, remote.',
+    'Brendon Otto is a Lead Staff Software Engineer on the Architecture team at FMG Suite: architecture and modernization, API design, AI enablement for engineering orgs, and technical leadership. Minnesota, remote.',
   url: 'https://brendonotto.com',
 };
 
@@ -26,31 +26,49 @@ export const links = [
   { label: 'YouTube', handle: 'brendonotto', href: 'https://www.youtube.com/brendonotto' },
 ];
 
-// What I do now. Ordered by scope.
-export const now = [
+// What I do. Capabilities first; the specific project is evidence, not the headline.
+export const capabilities = [
   {
-    code: 'MONTAGE',
-    title: 'Montage',
+    code: 'ARCH',
+    title: 'Architecture and modernization',
     body:
-      'Leading the decoupling of our ASP.NET monolith into .NET 10 containerized APIs, each owned and released by its own team. It ends the shared central release train.',
+      'I take large, aging systems apart along the lines teams actually work on, so each piece can be owned and released independently. Monolith to services, legacy UI to modern front end, with migrations that can roll forward or back.',
+    evidence: 'Currently leading a monolith-to-containerized-services decomposition across every product team.',
   },
   {
-    code: 'AI-ADOPT',
-    title: 'AI adoption across 40+ engineers',
+    code: 'API',
+    title: 'API design and platform standards',
     body:
-      'Day-and-a-half GitHub Copilot workshops for six product teams, weekly department trainings, layered AGENTS.md conventions across repositories, and custom agents and skills that encode our products for AI-assisted review. Piloted the GitHub Copilot Upgrade Agent for .NET modernization with Microsoft.',
+      'RESTful conventions, resources and actions named early, performance treated as a feature from day one. Caching is a gated exception, not a default, so the API itself gets tuned first.',
+    evidence: 'Designed or founded three platform APIs. None has needed a data cache.',
   },
   {
-    code: 'STANDARDS',
-    title: 'Engineering standards',
+    code: 'AI',
+    title: 'AI enablement for engineering orgs',
     body:
-      'Working with the VP of Engineering on org-wide standards tied to the return on our AI investment. Eliminate process before automating it.',
+      'Getting a whole department productive with AI tooling: per-team workshops, weekly trainings, model-selection and token coaching, layered repository context, custom agents and skills, and standards that tie the spend to a measurable return.',
+    evidence: '40+ engineers and six product teams onboarded over two years.',
   },
   {
-    code: 'API-PLAT',
-    title: 'API platform',
+    code: 'LEAD',
+    title: 'Technical leadership',
     body:
-      'Started the Content API, helped lay the foundations for the Management API, built the Site API, and set the conventions behind them. None of them has needed a data cache yet.',
+      'Team lead, then co-founder of an architecture team that grew from two engineers to seven. I mentor Socratically, run projects with product owners and delivery leads, and manage offshore teams through tickets, review, and releases.',
+    evidence: 'Engineering standards developed with the VP of Engineering and rolled out org-wide.',
+  },
+  {
+    code: 'FE',
+    title: 'Front-end platform',
+    body:
+      'Choosing the framework and component foundation, proving it in a real feature, and standardizing it so engineers stop making UX decisions ad hoc.',
+    evidence: 'Ran the proof of concept that moved a product from Knockout.js to React and Material UI.',
+  },
+  {
+    code: 'COMM',
+    title: 'Translation between engineering and the business',
+    body:
+      'A Communication Studies degree used daily: explaining trade-offs to product owners, customers, and executives, and breaking work into steps so nothing gets dropped.',
+    evidence: 'The hardest conversations at this level are about scope and sequencing, not syntax.',
   },
 ];
 
@@ -72,7 +90,7 @@ export const experience = [
         span: '2024 – present',
         bullets: [
           'Co-founded the Architecture team, now six to seven engineers. Scope: engineering practices, CI/CD, .NET modernization, infrastructure R&D, and technical assessment with product teams.',
-          'Lead Montage, decoupling the ASP.NET monolith into team-owned .NET 10 containerized APIs.',
+          'Leading the decomposition of the monolith into team-owned containerized services, each released independently.',
           'Lead AI adoption across a 40+ engineer department: workshops for six product teams, weekly trainings, AGENTS.md conventions, custom agents and skills.',
           'Spent about a year leading the WebForms migration straight to React and APIs, skipping MVC, with an offshore team.',
         ],
@@ -81,8 +99,8 @@ export const experience = [
         title: 'Lead Software Engineer, Website team',
         span: '2019 – 2024',
         bullets: [
-          'Designed and led delivery of Visual Editing: the CMS renders on the real website and edits that view. Forward and backward migration scripts made the release a non-event on a shortened timeline.',
-          'Started the Content API, helped set the foundations for the Management API, built the Site API, and set the conventions used since.',
+          'Designed and led delivery of in-place visual editing for the CMS. Forward and backward migration scripts made the release a non-event on a shortened timeline.',
+          'Founded or built three platform APIs and set the conventions the department has used since.',
           'Pulled into the tiger team that built the API backend for the mobile app, which led into the Architecture team.',
         ],
       },
@@ -144,48 +162,49 @@ export const experience = [
   },
 ];
 
-export const work = [
+// Problems I have solved. Framed so they transfer; the "where" line is the proof.
+export const problems = [
   {
     code: 'P-01',
-    name: 'Montage',
-    problem: 'One ASP.NET monolith, one shared release train, every team waiting on everyone else.',
-    did: 'Leading the decomposition into .NET 10 containerized APIs, each owned and released by its team.',
-    outcome: 'Independent releases per team. In progress, 2026.',
+    name: 'Decouple a monolith so teams can release independently',
+    problem: 'One shared codebase, one release train, every team waiting on everyone else.',
+    approach: 'Find the seams along team ownership, stand up containerized services with clear contracts, and end the central release.',
+    where: 'Leading this now for a 40+ engineer department, .NET to containerized services.',
   },
   {
     code: 'P-02',
-    name: 'AI enablement program',
-    problem: 'A 40+ engineer department with new tools and no shared way of using them.',
-    did: 'Per-team workshops, weekly trainings, layered AGENTS.md, custom agents and skills, model-selection coaching, and ROI standards with the VP.',
-    outcome: 'Six product teams onboarded. Standards the company can measure against.',
+    name: 'Get an engineering org productive with AI',
+    problem: 'New tools, no shared way of using them, and leadership asking what the spend returns.',
+    approach: 'Workshops per team, weekly trainings, layered repository context, custom agents and skills, and standards the company can measure against.',
+    where: 'Six product teams and 40+ engineers over two years. Piloted a vendor modernization agent with Microsoft.',
   },
   {
     code: 'P-03',
-    name: 'API platform',
-    problem: 'One internal-only API when I joined.',
-    did: 'Started the Content API, laid foundations for the Management API, built the Site API. RESTful, resources named early, performance tuned from day one, caching gated behind approval.',
-    outcome: 'No API has needed a data cache yet.',
+    name: 'Stand up an API platform that performs without caching',
+    problem: 'One internal-only API and no conventions for the next ten.',
+    approach: 'RESTful design, resources named early, return exactly what the caller needs, tune before you cache.',
+    where: 'Three platform APIs founded or built. No data cache needed to date.',
   },
   {
     code: 'P-04',
-    name: 'Visual Editing',
-    problem: 'A CMS that edited pages in decoupled sections, far from what customers saw.',
-    did: 'Proved, designed, and led the shift to editing the rendered site in place, with forward and backward migration scripts.',
-    outcome: 'Shipped on a shortened timeline. The VP of Engineering called the release "super boring."',
+    name: 'Ship a large product change with a boring release',
+    problem: 'A core editing experience had to change under a shortened timeline, with a big audience watching.',
+    approach: 'Prove it first, write forward and backward migrations, rehearse the release so rollback is a non-event.',
+    where: 'In-place visual editing for a CMS. The VP of Engineering called the release "super boring."',
   },
   {
     code: 'P-05',
-    name: 'Knockout to React',
-    problem: 'An aging Knockout.js front end and no agreed path forward.',
-    did: 'Ran the React proof of concept against a colleague’s Vue one. Chose Material UI as the component foundation.',
-    outcome: 'Most of the product is now React. Engineers stopped making UX decisions ad hoc.',
+    name: 'Replace a front-end framework without stopping the product',
+    problem: 'An aging framework and no agreed path forward.',
+    approach: 'Run competing proofs of concept on real features, pick a component foundation, and standardize so the rest of the product can follow.',
+    where: 'Knockout.js to React and Material UI. Most of the product has since moved.',
   },
   {
     code: 'P-06',
-    name: 'WebForms migration',
-    problem: 'ASP.NET Web Forms pages that needed to go.',
-    did: 'Led about a year of migration straight to React and APIs, skipping MVC, managing an offshore team through tickets, review, testing, and releases.',
-    outcome: 'Legacy pages retired without a detour through an intermediate stack.',
+    name: 'Retire legacy UI with a distributed team',
+    problem: 'Legacy pages that had to go, with the delivery team in another time zone.',
+    approach: 'Skip the intermediate stack, go straight to the target architecture, and run the work through tickets, review, testing, and releases.',
+    where: 'About a year of ASP.NET Web Forms to React and APIs with an offshore team.',
   },
 ];
 

@@ -1,15 +1,18 @@
 ---
-import { work } from '../data/profile';
+import { problems } from '../data/profile';
 ---
 
 <section id="work" class="sheet">
   <div class="wrap">
     <div class="sheet-head">
-      <h2>Selected work</h2>
-      <p class="mono">Sheet 03 · Parts list</p>
+      <h2>Problems I've solved</h2>
+      <p class="mono">Sheet 03 · Problem types</p>
     </div>
+    <p class="intro measure">
+      The specifics change from company to company. The shape of the problem usually doesn't.
+    </p>
     <ul class="parts">
-      {work.map((w) => (
+      {problems.map((w) => (
         <li class="part">
           <div class="part-head">
             <span class="mono code">{w.code}</span>
@@ -18,10 +21,10 @@ import { work } from '../data/profile';
           <dl>
             <dt class="mono">Problem</dt>
             <dd>{w.problem}</dd>
-            <dt class="mono">What I did</dt>
-            <dd>{w.did}</dd>
-            <dt class="mono">Outcome</dt>
-            <dd class="outcome">{w.outcome}</dd>
+            <dt class="mono">Approach</dt>
+            <dd>{w.approach}</dd>
+            <dt class="mono">Proof</dt>
+            <dd class="where">{w.where}</dd>
           </dl>
         </li>
       ))}
@@ -30,6 +33,11 @@ import { work } from '../data/profile';
 </section>
 
 <style>
+  .intro {
+    color: var(--ink-2);
+    margin-bottom: 1.5rem;
+  }
+
   .parts {
     list-style: none;
     margin: 0;
@@ -76,14 +84,14 @@ import { work } from '../data/profile';
   }
 
   .part-head {
-    display: flex;
-    align-items: baseline;
-    gap: 0.9rem;
+    display: grid;
+    gap: 0.35rem;
   }
 
   .part-head h3 {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     font-weight: 700;
+    line-height: 1.2;
   }
 
   .code {
@@ -93,9 +101,9 @@ import { work } from '../data/profile';
   dl {
     margin: 0;
     display: grid;
-    grid-template-columns: 7.5rem minmax(0, 1fr);
+    grid-template-columns: 6rem minmax(0, 1fr);
     gap: 0.45rem 1rem;
-    font-size: 0.98rem;
+    font-size: 0.97rem;
   }
 
   dt {
@@ -107,7 +115,7 @@ import { work } from '../data/profile';
     color: var(--ink-2);
   }
 
-  .outcome {
+  .where {
     color: var(--ink);
     font-weight: 500;
   }
