@@ -4,7 +4,7 @@ A single page at brendonotto.com (or a subpath) that works like Linktree but loo
 
 ## Content, top to bottom
 
-1. **Name, title, location.** "Brendon Otto · Lead Staff Software Engineer · Minnesota, remote" (no city). A photo slot with a `TODO: headshot` placeholder; don't source an image.
+1. **Name, title, location.** "Brendon Otto · Lead Staff Software Engineer · Minnesota, remote" (no city). Photo: his GitHub avatar, kept in the claude-me repo at `site/public/images/brendon.jpg`.
 2. **Short bio** from the profile (~60 words). It should stand alone; many visitors read nothing else.
 3. **Link buttons**, in this order unless told otherwise: Website/Blog, GitHub, LinkedIn, X, YouTube. No email button. Each button is full-width, large tap target, label plus the bare handle or domain. Use the exact URLs from the profile; the X handle is brendon**d**otto.
 4. **Long bio**, collapsed behind a "More about me" toggle or placed below the links. ~350 words, from the profile. First person.

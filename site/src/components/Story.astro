@@ -13,6 +13,11 @@ import { story, principles, personal } from '../data/profile';
         {story.map((p) => <p>{p}</p>)}
         <p class="personal">{personal}</p>
       </div>
+      <div class="side">
+      <figure class="portrait">
+        <img src="/images/brendon.jpg" alt="Brendon Otto, outdoors in autumn, smiling at the camera" width="460" height="460" loading="lazy" decoding="async" />
+        <figcaption class="mono">Fig. 2 · Detail view</figcaption>
+      </figure>
       <aside class="principles" aria-labelledby="principles-h">
         <h3 id="principles-h" class="mono">How I work</h3>
         <ul>
@@ -24,6 +29,7 @@ import { story, principles, personal } from '../data/profile';
           ))}
         </ul>
       </aside>
+      </div>
     </div>
   </div>
 </section>
@@ -59,12 +65,61 @@ import { story, principles, personal } from '../data/profile';
     font-size: 1rem;
   }
 
+  .side {
+    display: grid;
+    gap: 1.25rem;
+    position: sticky;
+    top: 80px;
+  }
+
+  .portrait {
+    margin: 0;
+    width: min(100%, 260px);
+    position: relative;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .portrait img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 1px solid var(--blue);
+    background: var(--paper);
+    filter: saturate(0.85);
+  }
+
+  /* registration marks, like a detail callout on a sheet */
+  .portrait::before,
+  .portrait::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border: 0 solid var(--accent);
+    pointer-events: none;
+  }
+
+  .portrait::before {
+    top: -5px;
+    left: -5px;
+    border-top-width: 2px;
+    border-left-width: 2px;
+  }
+
+  .portrait::after {
+    top: calc(min(100%, 260px) - 7px);
+    right: -5px;
+    border-bottom-width: 2px;
+    border-right-width: 2px;
+  }
+
   .principles {
     border: 1px solid var(--line);
     background: var(--paper);
     padding: 1.25rem 1.4rem 1.4rem;
-    position: sticky;
-    top: 80px;
   }
 
   .principles h3 {
@@ -102,7 +157,7 @@ import { story, principles, personal } from '../data/profile';
       grid-template-columns: 1fr;
     }
 
-    .principles {
+    .side {
       position: static;
     }
   }

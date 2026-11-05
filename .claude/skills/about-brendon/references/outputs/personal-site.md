@@ -21,6 +21,10 @@ A multi-section site (or multi-page, if asked) at brendonotto.com for a hiring m
 - Each page gets a `<title>` of the form "Page · Brendon Otto" and a meta description drawn from the profile.
 - If the site includes the blog, keep the existing post slugs so old links don't break.
 
+## Headshot
+
+One photo, small, in the About/Story section as a labeled figure ("Fig. 2 · Detail view"), never as a hero portrait. The source is his GitHub avatar (460×460), saved at `site/public/images/brendon.jpg`; use the same photo everywhere so LinkedIn, GitHub, and the site match. Brendon's direction, 2026-11-05.
+
 ## Things to avoid
 
 - Padding thin sections. If Writing has six posts, show six posts; don't add "coming soon."
