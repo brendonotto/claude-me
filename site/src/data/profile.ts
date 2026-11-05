@@ -54,7 +54,7 @@ export const capabilities = [
     title: 'Technical leadership',
     body:
       'Team lead, then co-founder of an architecture team that grew from two engineers to seven. I mentor Socratically, run projects with product owners and delivery leads, and manage offshore teams through tickets, review, and releases.',
-    evidence: 'Engineering standards developed with the VP of Engineering and rolled out org-wide.',
+    evidence: 'Engineering standards developed with engineering leadership and rolled out org-wide.',
   },
   {
     code: 'FE',
@@ -76,7 +76,7 @@ export const story = [
   "I didn't come in through a computer science degree. After a Communication Studies degree from the University of Minnesota and a stint in insurance sales, I took an installation technician job at Insite Software just to get inside a technology company.",
   'Tier 2 and 3 support taught me how the whole system fit together: printer connectivity, broken customizations, bad data. Volunteering for small Progress customizations to offload the senior engineers turned into a programming job, earned by delivering projects on time and under budget. When the product was rebuilt in C#, I taught myself at night and designed the bridges between the two systems so expensive carrier certifications could be reused across both.',
   'That habit of getting into a system, breaking it down to its pieces, and making sense of it carried me through Epicor and ProAg Crop Insurance and into FMG, where I went from senior engineer on the website team, to team lead, to co-founding the Architecture team that now guides the flagship product.',
-  'I still use the communication degree every day. Most of the job at this level is translating: between engineers and product owners, between a technical trade-off and a business decision, between what a system does and what a VP needs to know about it.',
+  'I still use the communication degree every day. Most of the job at this level is translating: between engineers and product owners, between a technical trade-off and a business decision, between what a system does and what engineering leadership needs to know about it.',
 ];
 
 export const experience = [
@@ -190,7 +190,7 @@ export const problems = [
     name: 'Ship a large product change with a boring release',
     problem: 'A core editing experience had to change under a shortened timeline, with a big audience watching.',
     approach: 'Prove it first, write forward and backward migrations, rehearse the release so rollback is a non-event.',
-    where: 'In-place visual editing for a CMS. The VP of Engineering called the release "super boring."',
+    where: 'In-place visual editing for a CMS. Engineering leadership called the release "super boring."',
   },
   {
     code: 'P-05',
