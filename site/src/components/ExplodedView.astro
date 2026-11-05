@@ -1,0 +1,194 @@
+---
+// An exploded isometric drawing: four APIs lifting out of the monolith they came from.
+// Geometry is computed here so there is no hand-written path data.
+
+const ISO_X = [Math.cos(Math.PI / 6), Math.sin(Math.PI / 6)];
+const ISO_Y = [-Math.cos(Math.PI / 6), Math.sin(Math.PI / 6)];
+
+type Pt = [number, number];
+
+function iso(x: number, y: number, z: number, ox: number, oy: number): Pt {
+  return [ox + x * ISO_X[0] + y * ISO_Y[0], oy + x * ISO_X[1] + y * ISO_Y[1] - z];
+}
+
+function poly(points: Pt[]) {
+  return points.map(([x, y]) => `${x.toFixed(1)},${y.toFixed(1)}`).join(' ');
+}
+
+// A slab centred on (ox, oy) with footprint w × d and height h; z is its bottom.
+function slab(w: number, d: number, h: number, z: number, ox: number, oy: number) {
+  const x0 = -w / 2;
+  const y0 = -d / 2;
+  const top = [iso(x0, y0, z + h, ox, oy), iso(x0 + w, y0, z + h, ox, oy), iso(x0 + w, y0 + d, z + h, ox, oy), iso(x0, y0 + d, z + h, ox, oy)];
+  const left = [iso(x0, y0 + d, z + h, ox, oy), iso(x0 + w, y0 + d, z + h, ox, oy), iso(x0 + w, y0 + d, z, ox, oy), iso(x0, y0 + d, z, ox, oy)];
+  const right = [iso(x0 + w, y0, z + h, ox, oy), iso(x0 + w, y0 + d, z + h, ox, oy), iso(x0 + w, y0 + d, z, ox, oy), iso(x0 + w, y0, z, ox, oy)];
+  const rightEdge = iso(x0 + w, y0 + d, z + h / 2, ox, oy);
+  return { top: poly(top), left: poly(left), right: poly(right), rightEdge };
+}
+
+const OX = 240;
+const OY = 372;
+const base = slab(236, 236, 22, 0, OX, OY);
+const SLAB_H = 26;
+const parts = [
+  { label: 'Content API', z: 22 },
+  { label: 'Management API', z: 22 + SLAB_H },
+  { label: 'Site API', z: 22 + SLAB_H * 2 },
+  { label: 'Mobile app API', z: 22 + SLAB_H * 3 },
+].map((p, i) => ({ ...p, lift: -(i + 1) * 30, geo: slab(176, 176, SLAB_H, p.z, OX, OY) }));
+---
+
+<figure class="exploded" aria-labelledby="exploded-caption">
+  <svg viewBox="0 0 580 520" role="img" aria-label="Exploded drawing of four APIs lifting out of a monolith base">
+    <defs>
+      <marker id="tick" viewBox="0 0 6 6" refX="3" refY="3" markerWidth="6" markerHeight="6" orient="auto">
+        <path d="M1 5 L5 1" stroke="var(--blue)" stroke-width="1" fill="none"></path>
+      </marker>
+    </defs>
+
+    <!-- base: what the pieces came out of -->
+    <g class="base">
+      <polygon points={base.left} class="face face-left"></polygon>
+      <polygon points={base.right} class="face face-right"></polygon>
+      <polygon points={base.top} class="face face-top"></polygon>
+    </g>
+
+    {
+      parts.map((p, i) => (
+        <g class="slab" style={`--lift:${p.lift}px; --i:${i}`}>
+          <polygon points={p.geo.left} class="face face-left" />
+          <polygon points={p.geo.right} class="face face-right" />
+          <polygon points={p.geo.top} class="face face-top" />
+          <g class="callout">
+            <line x1={p.geo.rightEdge[0]} y1={p.geo.rightEdge[1]} x2="432" y2={p.geo.rightEdge[1]} class="leader" />
+            <circle cx={p.geo.rightEdge[0]} cy={p.geo.rightEdge[1]} r="2.2" class="dot" />
+            <text x="438" y={p.geo.rightEdge[1] + 4} class="label">
+              {p.label}
+            </text>
+          </g>
+        </g>
+      ))
+    }
+
+    <!-- dimension line down the left: how far the stack is from the base -->
+    <g class="dim">
+      <line x1="22" y1="100" x2="22" y2="350" class="dim-line" marker-start="url(#tick)" marker-end="url(#tick)"></line>
+      <line x1="22" y1="350" x2="36" y2="350" class="dim-line"></line>
+      <text x="16" y="225" class="label dim-text" transform="rotate(-90 16 225)">4 × team-owned</text>
+    </g>
+
+    <g class="base-label">
+      <text x="240" y="510" class="label base-text">ASP.NET monolith</text>
+    </g>
+  </svg>
+  <figcaption id="exploded-caption" class="mono">Fig. 1 · Exploded view · Montage, 2026</figcaption>
+</figure>
+
+<style>
+  .exploded {
+    margin: 0;
+    width: 100%;
+    max-width: 560px;
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  figcaption {
+    margin-top: 0.5rem;
+    text-align: right;
+  }
+
+  .face {
+    stroke: var(--blue);
+    stroke-width: 1;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .face-top {
+    fill: var(--paper);
+  }
+
+  .face-left {
+    fill: color-mix(in srgb, var(--paper) 82%, var(--blue));
+  }
+
+  .face-right {
+    fill: color-mix(in srgb, var(--paper) 68%, var(--blue));
+  }
+
+  .base .face-top {
+    fill: color-mix(in srgb, var(--paper) 90%, var(--blue));
+  }
+
+  .slab {
+    animation: lift 1500ms cubic-bezier(0.2, 0.75, 0.2, 1) both;
+    animation-delay: calc(500ms + var(--i) * 140ms);
+    transform: translateY(var(--lift));
+  }
+
+  .callout {
+    animation: reveal 600ms ease both;
+    animation-delay: calc(1500ms + var(--i) * 140ms);
+  }
+
+  .leader {
+    stroke: var(--blue);
+    stroke-width: 1;
+    stroke-dasharray: 3 3;
+  }
+
+  .dot {
+    fill: var(--accent);
+  }
+
+  .label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    fill: var(--ink-2);
+  }
+
+  .dim-line {
+    stroke: var(--blue);
+    stroke-width: 1;
+  }
+
+  .dim-text {
+    text-anchor: middle;
+    fill: var(--muted);
+  }
+
+  .base-text {
+    text-anchor: middle;
+    fill: var(--muted);
+  }
+
+  .dim {
+    animation: reveal 600ms ease both;
+    animation-delay: 2100ms;
+  }
+
+  @keyframes lift {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(var(--lift));
+    }
+  }
+
+  @keyframes reveal {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+</style>

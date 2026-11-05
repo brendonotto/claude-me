@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Now from '../components/Now.astro';
+import Story from '../components/Story.astro';
+import Work from '../components/Work.astro';
+import Experience from '../components/Experience.astro';
+import Writing from '../components/Writing.astro';
+import Contact from '../components/Contact.astro';
+import TitleBlock from '../components/TitleBlock.astro';
+import { identity } from '../data/profile';
+---
+
+<Base title={`${identity.name} · ${identity.title}`} description={identity.description}>
+  <Nav />
+  <main>
+    <Hero />
+    <Now />
+    <Story />
+    <Work />
+    <Experience />
+    <Writing />
+    <Contact />
+  </main>
+  <TitleBlock />
+</Base>

@@ -1,0 +1,201 @@
+---
+import { experience, skills } from '../data/profile';
+---
+
+<section id="experience" class="sheet">
+  <div class="wrap">
+    <div class="sheet-head">
+      <h2>Experience</h2>
+      <p class="mono">Sheet 04 · 2011 to present</p>
+    </div>
+    <div class="exp-grid">
+      <ol class="timeline">
+        {experience.map((e) => (
+          <li class="employer">
+            <div class="employer-head">
+              <h3>{e.company}</h3>
+              <p class="mono tabular">{e.span} · {e.where}</p>
+            </div>
+            <ol class="roles">
+              {e.roles.map((r) => (
+                <li class="role">
+                  <p class="role-title">
+                    <span>{r.title}</span>
+                    {r.span && <span class="mono tabular role-span">{r.span}</span>}
+                  </p>
+                  <ul class="bullets">
+                    {r.bullets.map((b) => <li>{b}</li>)}
+                  </ul>
+                </li>
+              ))}
+            </ol>
+          </li>
+        ))}
+      </ol>
+
+      <aside class="bom" aria-labelledby="bom-h">
+        <h3 id="bom-h" class="mono">Bill of materials</h3>
+        {skills.map((s) => (
+          <div class="bom-group">
+            <p class="mono group">{s.group}</p>
+            <ul>
+              {s.items.map((i) => <li>{i}</li>)}
+            </ul>
+          </div>
+        ))}
+        <p class="edu">
+          <span class="mono">Education</span>
+          <span>B.A. Communication Studies, University of Minnesota, 2010</span>
+        </p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<style>
+  .exp-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+
+  .timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 2.2rem;
+    border-left: 1px solid var(--line);
+  }
+
+  .employer {
+    padding-left: 1.5rem;
+    position: relative;
+    display: grid;
+    gap: 1rem;
+  }
+
+  /* tick on the timeline */
+  .employer::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 0.75rem;
+    width: 9px;
+    height: 9px;
+    background: var(--bg);
+    border: 1px solid var(--blue);
+    transform: rotate(45deg);
+  }
+
+  .employer:first-child::before {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .employer-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.4rem 1rem;
+  }
+
+  .employer-head h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .roles {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1.1rem;
+  }
+
+  .role-title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.25rem 1rem;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+  }
+
+  .bullets {
+    margin: 0;
+    padding-left: 1.1rem;
+    color: var(--ink-2);
+    font-size: 0.98rem;
+    display: grid;
+    gap: 0.3rem;
+  }
+
+  .bullets li::marker {
+    color: var(--blue);
+  }
+
+  .bom {
+    border: 1px solid var(--line);
+    background: var(--paper);
+    padding: 1.25rem 1.4rem 1.4rem;
+    display: grid;
+    gap: 1.1rem;
+    position: sticky;
+    top: 80px;
+  }
+
+  .bom h3 {
+    font-family: var(--mono);
+    font-weight: 500;
+  }
+
+  .bom-group {
+    display: grid;
+    gap: 0.45rem;
+  }
+
+  .group {
+    color: var(--accent);
+  }
+
+  .bom ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .bom li {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    padding: 0.2rem 0.55rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    color: var(--ink-2);
+  }
+
+  .edu {
+    display: grid;
+    gap: 0.2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.95rem;
+    color: var(--ink-2);
+  }
+
+  @media (max-width: 860px) {
+    .exp-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .bom {
+      position: static;
+    }
+  }
+</style>

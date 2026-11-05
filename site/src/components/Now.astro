@@ -1,0 +1,63 @@
+---
+import { now } from '../data/profile';
+---
+
+<section id="now" class="sheet">
+  <div class="wrap">
+    <div class="sheet-head">
+      <h2>What I'm building now</h2>
+      <p class="mono">Sheet 01 · Current scope</p>
+    </div>
+    <ol class="now-list">
+      {now.map((n) => (
+        <li class="now-item">
+          <p class="mono code">{n.code}</p>
+          <h3>{n.title}</h3>
+          <p class="body">{n.body}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .now-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+  }
+
+  .now-item {
+    display: grid;
+    gap: 0.5rem;
+    padding: 1.4rem 1.4rem 1.6rem;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: color-mix(in srgb, var(--paper) 55%, transparent);
+    min-width: 0;
+  }
+
+  .now-item h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+  }
+
+  .code {
+    color: var(--accent);
+  }
+
+  .body {
+    color: var(--ink-2);
+    font-size: 1rem;
+  }
+
+  @media (max-width: 720px) {
+    .now-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

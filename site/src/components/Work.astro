@@ -1,0 +1,131 @@
+---
+import { work } from '../data/profile';
+---
+
+<section id="work" class="sheet">
+  <div class="wrap">
+    <div class="sheet-head">
+      <h2>Selected work</h2>
+      <p class="mono">Sheet 03 · Parts list</p>
+    </div>
+    <ul class="parts">
+      {work.map((w) => (
+        <li class="part">
+          <div class="part-head">
+            <span class="mono code">{w.code}</span>
+            <h3>{w.name}</h3>
+          </div>
+          <dl>
+            <dt class="mono">Problem</dt>
+            <dd>{w.problem}</dd>
+            <dt class="mono">What I did</dt>
+            <dd>{w.did}</dd>
+            <dt class="mono">Outcome</dt>
+            <dd class="outcome">{w.outcome}</dd>
+          </dl>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .parts {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .part {
+    border: 1px solid var(--line);
+    background: var(--paper);
+    padding: 1.25rem 1.4rem 1.4rem;
+    display: grid;
+    gap: 1rem;
+    min-width: 0;
+    position: relative;
+  }
+
+  /* registration marks in the corners, like a drawing sheet */
+  .part::before,
+  .part::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-color: var(--blue);
+    border-style: solid;
+    border-width: 0;
+  }
+
+  .part::before {
+    top: 6px;
+    left: 6px;
+    border-top-width: 1px;
+    border-left-width: 1px;
+  }
+
+  .part::after {
+    bottom: 6px;
+    right: 6px;
+    border-bottom-width: 1px;
+    border-right-width: 1px;
+  }
+
+  .part-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.9rem;
+  }
+
+  .part-head h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+
+  .code {
+    color: var(--accent);
+  }
+
+  dl {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 7.5rem minmax(0, 1fr);
+    gap: 0.45rem 1rem;
+    font-size: 0.98rem;
+  }
+
+  dt {
+    padding-top: 0.2rem;
+  }
+
+  dd {
+    margin: 0;
+    color: var(--ink-2);
+  }
+
+  .outcome {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  @media (max-width: 860px) {
+    .parts {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    dl {
+      grid-template-columns: 1fr;
+      gap: 0.15rem 0;
+    }
+
+    dd + dt {
+      margin-top: 0.6rem;
+    }
+  }
+</style>

@@ -1,0 +1,95 @@
+---
+import { writing, postsIndex } from '../data/profile';
+---
+
+<section id="writing" class="sheet">
+  <div class="wrap">
+    <div class="sheet-head">
+      <h2>Writing</h2>
+      <p class="mono">Sheet 05 · Side projects</p>
+    </div>
+    <p class="intro measure">
+      The blog is where side projects get written up. Rust, Elixir and Phoenix, SvelteKit, and a Synology NAS that hosts
+      most of it.
+    </p>
+    <ol class="posts">
+      {writing.map((w) => (
+        <li>
+          <a href={postsIndex} rel="noopener">
+            <span class="mono tabular date">{w.date}</span>
+            <span class="title">{w.title}</span>
+            <span class="summary">{w.summary}</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+    <p class="all">
+      <a class="btn" href={postsIndex} rel="noopener">All posts on brendonotto.com</a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .intro {
+    color: var(--ink-2);
+    margin-bottom: 1.5rem;
+  }
+
+  .posts {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .posts a {
+    display: grid;
+    grid-template-columns: 6rem minmax(0, 1fr);
+    grid-template-areas:
+      'date title'
+      'date summary';
+    gap: 0.1rem 1rem;
+    padding: 0.9rem 0.25rem;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+    transition: background-color 120ms ease;
+  }
+
+  .posts a:hover {
+    background: var(--accent-soft);
+  }
+
+  .posts a:hover .title {
+    color: var(--accent);
+  }
+
+  .date {
+    grid-area: date;
+    padding-top: 0.25rem;
+  }
+
+  .title {
+    grid-area: title;
+    font-weight: 600;
+  }
+
+  .summary {
+    grid-area: summary;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  .all {
+    margin-top: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    .posts a {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        'date'
+        'title'
+        'summary';
+    }
+  }
+</style>

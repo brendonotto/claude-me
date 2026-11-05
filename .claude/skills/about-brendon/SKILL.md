@@ -34,7 +34,7 @@ Brendon is a pragmatic engineer with a Communication Studies degree. He explains
 
 ## Privacy boundaries
 
-Public and fine to use: hobbies (3D printing, woodworking, movies, occasional video games, hiking, geocaching), Brazilian Jiu-Jitsu, the dog Oliver, "father and husband," White Bear Lake, MN. Do not go further: no names of family members, no street address, no employer internals beyond what the profile already states (project names like Montage and Visual Editing are fine; he chose to share them). Instagram is linked from his blog but is a personal account; leave it off professional pages unless he asks for it.
+Public and fine to use: hobbies (3D printing, woodworking, movies, occasional video games, hiking, geocaching), Brazilian Jiu-Jitsu, the dog Oliver, "father and husband." On public pages (README, site, landing page) say "Minnesota" or "Minnesota, remote" and do not name the city; White Bear Lake stays in the profile for context only. Leave his email off public pages (it draws spam and newsletter sign-ups); LinkedIn and X are the contact routes unless he asks otherwise. Do not go further: no names of family members, no street address, no employer internals beyond what the profile already states (project names like Montage and Visual Editing are fine; he chose to share them). Instagram is linked from his blog but is a personal account; leave it off professional pages unless he asks for it.
 
 ## Key facts (quick reference; the profile has the detail)
 

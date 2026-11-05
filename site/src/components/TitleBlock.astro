@@ -1,0 +1,105 @@
+---
+import { identity } from '../data/profile';
+
+const year = new Date().getFullYear();
+const rev = new Date().toISOString().slice(0, 7).replace('-', '.');
+---
+
+<footer class="wrap">
+  <div class="title-block" role="contentinfo">
+    <div class="cell wide">
+      <span class="mono">Title</span>
+      <span class="val name">{identity.name}</span>
+    </div>
+    <div class="cell">
+      <span class="mono">Drawn by</span>
+      <span class="val">{identity.first}, {identity.pronouns}</span>
+    </div>
+    <div class="cell">
+      <span class="mono">Location</span>
+      <span class="val">{identity.location}</span>
+    </div>
+    <div class="cell">
+      <span class="mono">Rev</span>
+      <span class="val tabular">{rev}</span>
+    </div>
+    <div class="cell">
+      <span class="mono">Scale</span>
+      <span class="val">NTS</span>
+    </div>
+    <div class="cell">
+      <span class="mono">Sheet</span>
+      <span class="val tabular">1 of 1</span>
+    </div>
+    <div class="cell">
+      <span class="mono">Built with</span>
+      <span class="val">Astro, no client framework</span>
+    </div>
+    <div class="cell">
+      <span class="mono">©</span>
+      <span class="val tabular">{year} {identity.name}</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  footer {
+    padding-block: 2rem 2.5rem;
+  }
+
+  .title-block {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border: 1px solid var(--ink);
+    background: var(--paper);
+  }
+
+  .cell {
+    display: grid;
+    gap: 0.15rem;
+    padding: 0.7rem 0.9rem;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    min-width: 0;
+  }
+
+  .cell:nth-child(4n),
+  .cell.wide {
+    border-right: 0;
+  }
+
+  .wide {
+    grid-column: 1 / -1;
+  }
+
+  .val {
+    font-size: 0.95rem;
+    overflow-wrap: anywhere;
+  }
+
+  .name {
+    font-family: var(--display);
+    font-variation-settings: 'wdth' 118;
+    font-weight: 780;
+    font-size: 1.6rem;
+    letter-spacing: -0.02em;
+  }
+
+  @media (max-width: 640px) {
+    .title-block {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .cell:nth-child(4n) {
+      border-right: 1px solid var(--line);
+    }
+
+    .cell:nth-child(2n + 1):not(.wide) {
+      border-right: 1px solid var(--line);
+    }
+
+    .cell:nth-child(2n):not(.wide) {
+      border-right: 0;
+    }
+  }
+</style>
