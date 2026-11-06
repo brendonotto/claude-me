@@ -103,7 +103,7 @@ He believes software is a team sport, that performance is a feature, and that on
 - No certifications listed.
 
 ## Speaking, Writing, Community
-- Blog: https://brendonotto.com — built with Astro (migrated from Next.js in Jan 2023). Six posts, 2021–2023, mostly hands-on write-ups from side projects plus a couple of reflective pieces:
+- Blog: https://brendonotto.com — rebuilt 2026-11 as a single Astro site (landing page + blog) in the claude-me repo, hosted on Cloudflare Workers. Previously Astro on Vercel (migrated from Next.js in Jan 2023). Six posts, 2021–2023, mostly hands-on write-ups from side projects plus a couple of reflective pieces:
   - *Hello world with Axum and Svelte* (Aug 2023) — Rust/Axum backend serving a static SvelteKit build; a quotes-collection side project.
   - *Set Docker Image to use on Fly* (Sep 2022) — pinning a base image in fly.toml for an Elixir 1.14 Phoenix app.
   - *Host Docker Registry on a Synology NAS* (Mar 2022) — private registry on a DS920+ for self-hosted projects.
@@ -153,8 +153,8 @@ He believes software is a team sport, that performance is a feature, and that on
 - **Struggles with:** dragging an unwilling team forward; siloed teams that don't collaborate.
 
 ## Open Items / Follow-ups
-- Blog's about page says "12 years" as a software engineer and title "Lead Developer" — both stale; update the site when the new one is built.
-- Decide whether Instagram belongs on the professional landing page.
+- ~~Blog's about page says "12 years" / "Lead Developer"~~ Resolved 2026-11-06: brendonotto.com is now the new Astro site in `claude-me/site`, deployed on Cloudflare Workers. The old Vercel-hosted site is retired.
+- Decide whether Instagram belongs on the professional landing page. (Left off the 2026-11 site.)
 - Confirm exact promotion dates (team lead, architecture team) — resume says Lead 2019–2024, Lead Staff 2024–present.
 - Optional: a specific mentoring success story, and any retention/sales impact numbers for Visual Editing.
 
@@ -269,7 +269,7 @@ _(verbatim-ish answers, appended as we go)_
 
 **Resume skills line:** Expertise: C#, SQL, Git, JavaScript, React, ASP.NET (Core), Dapper, Entity Framework (Core), AngularJS, VB.NET, TFS. Proficient: MS Test, Moq, Jest, Jasmine, Elixir, Python, NHibernate. Prior: SVN, Progress, Crystal Reports, Active Reports.
 
-**Note:** brendonotto.com (blog) could not be fetched — host not allowed by this session's network policy. Revisit as source material once allowed.
+**Note:** brendonotto.com is not reachable from cloud sessions (network policy). The post sources live in `claude-me/site/src/content/posts/`, so fetching the site is no longer needed.
 
 ### Q6 — Origin story & the communications background
 - Always wanted to work for a technology company. Left **insurance sales** and took an installation technician job at Insite Software just to get a foot in the door and see if he'd enjoy it.
@@ -360,3 +360,8 @@ _(verbatim-ish answers, appended as we go)_
 - Repo brendonotto/brendonotto, single README.md. Opens "Hi there 👋", describes him as "a lead staff software engineer in the Minneapolis area working for FMG Suite" doing .NET APIs, architecting services, training developers and teams, "helping others be their best selves."
 - Emoji checklist (GitHub's default template): working in C#, React & SQL; getting better at AI and collaborating with agents; learning Rust; wants to collaborate on Rust, Elixir, React; "looking for help with Rust"; reach via @brendondotto on X; pronouns he/him.
 - Links to https://fmgsuite.com/ — so the company URL is fine to use publicly.
+
+### 2026-11-06 — Site launch
+- New brendonotto.com went live on Cloudflare Workers (static assets). DNS moved from Squarespace nameservers to Cloudflare; registration stays at Squarespace for now (transfer to Cloudflare Registrar is optional, see `docs/cloudflare-deploy.md`).
+- Email is Fastmail (MX messagingengine.com, DKIM fm1–fm3). Old site was hosted on Vercel.
+- Public pages: "Minnesota, remote", no email address, "engineering leadership" rather than naming the VP. Headshot is the GitHub avatar.
